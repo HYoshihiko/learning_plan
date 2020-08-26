@@ -74,10 +74,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="date" placeholder="年/月/日" name="due_date">
             <input type="submit" value="追加">
         </form>
+        <?php if ($errors) : ?>
         <ul>
-            <li style="color:red; list-style:none;"><?= h($errors['title']) ?></li>
-            <li style="color:red; list-style:none;"><?= h($errors['due_date']) ?></li>
+            <?php foreach ($errors as $error) : ?>
+                <li class="error_contents">
+                    <?= h($error) ?>
+                </li>
+            <?php endforeach; ?>
         </ul>
+        <? endif; ?>
     </div>
 
     <div>
@@ -86,16 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php foreach ($notyet_plans as $plan) : ?>
                 <?php if (date("Y/m/d") >= $plan['due_date']) : ?>
                     <li class="expired">
-                <?php else : ?>
+                    <?php else : ?>
                     <li>
-                <?php endif; ?>
+                    <?php endif; ?>
                     <!-- タスク完了のリンクを追記 -->
                     <a href=" done.php?id=<?= h($plan['id']) ?>">[完了]</a>
                     <!-- 編集用のリンクを追記 -->
                     <a href="edit.php?id=<?= h($plan['id']) ?>">[編集]</a>
                     <?= h($plan['title']) . '･･･完了期限:' . date('Y/m/d', strtotime($plan['due_date'])) ?>
                     </li>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
         </ul>
         <hr>
 

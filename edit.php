@@ -62,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>編集画面</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -74,10 +75,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="date" name="due_date" value="<?= h($plan['due_date']) ?>">
             <input type="submit" value="編集">
         </form>
+        <?php if ($errors) : ?>
         <ul>
-            <li style="color:red; list-style:none;"><?= h($errors['title']) ?></li>
-            <li style="color:red; list-style:none;"><?= h($errors['due_date']) ?></li>
+            <?php foreach ($errors as $error) : ?>
+                <li class="error_contents">
+                    <?= h($error) ?>
+                </li>
+            <?php endforeach; ?>
         </ul>
+        <? endif; ?>
     </div>
     <div>
         <a href="index.php">戻る</a>
