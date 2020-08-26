@@ -64,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
     <h1>学習管理アプリ</h1>
     <div>
@@ -81,9 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </ul>
     </div>
 
-
-
-    <body>
+    <div>
         <h2>未達成</h2>
         <ul>
             <?php foreach ($notyet_plans as $plan) : ?>
@@ -111,6 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endforeach; ?>
         </ul>
 
-    </body>
+    </div>
 
 </html>

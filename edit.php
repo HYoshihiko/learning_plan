@@ -68,9 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>編集</h2>
     <div>
         <form action="" method="post">
-            <label for="content">学習内容:</label>
+            <label for="title">学習内容:</label>
             <input type="text" name="title" value="<?= h($plan['title']) ?>"><br>
-            <label for="due">期限日:</label>
+            <label for="due_date">期限日:</label>
             <input type="date" name="due_date" value="<?= h($plan['due_date']) ?>">
             <input type="submit" value="編集">
         </form>
